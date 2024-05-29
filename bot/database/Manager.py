@@ -34,7 +34,10 @@ class UsersManager(DBManager):
 
     def create_user(self, user_id: int) -> None:
         if not self.user_exists(user_id):
-            self.execute_query("INSERT INTO users(user_id, sent, received, is_banned) VALUES (?, ?, ?, ?)", (user_id, 0, 0, False))
+            self.execute_query(
+                "INSERT INTO users(user_id, sent, received, is_banned) VALUES (?, ?, ?, ?)",
+                (user_id, 0, 0, False),
+            )
 
     def ban_user(self, user_id: int) -> None:
         self.execute_query("UPDATE users SET is_banned = True WHERE user_id = ?", (user_id,))
@@ -58,3 +61,19 @@ class UsersManager(DBManager):
 
     def user_received_message(self, user_id: int) -> None:
         self.execute_query("UPDATE users SET received = received + 1 WHERE user_id = ?", (user_id,))
+
+
+class MessagesManager(DBManager):
+    def __init__(self):
+        table_schema = """CREATE TABLE IF NOT EXISTS messages (
+            message_id INTEGER
+        )"""
+        super().__init__("databases/messages.db", table_schema)
+
+    def insert_message(self, message_id: int) -> None:
+        self.execute_query("INSERT INTO messages (message_id) VALUES (?)", (message_id,))
+
+    def is_in_db(self, message_id: int) -> bool:
+        if self.fetch_one("SELECT * FROM messages WHERE message_id = ? LIMIT 1", (message_id,)):
+            return True
+        return False

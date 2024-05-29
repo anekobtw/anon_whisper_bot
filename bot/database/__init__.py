@@ -1,1 +1,1 @@
-from database.Manager import UsersManager
+from database.Manager import MessagesManager, UsersManager
