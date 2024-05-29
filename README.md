@@ -7,7 +7,10 @@
  ![licence](https://img.shields.io/badge/License-MIT-green)
  ![made with love](https://img.shields.io/badge/Made_with-Love-red)
  
-<p>Send anonymous messages in Telegram</p>
+Send anonymous messages in Telegram
+
+Try it out: [@anon_whisper_bot](https://t.me/anon_whisper_bot)
+
 </div>
 
 ## Getting started
