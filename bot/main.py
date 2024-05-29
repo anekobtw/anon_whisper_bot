@@ -1,14 +1,16 @@
 import asyncio
 import logging
 import os
+import time
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.bot import DefaultBotProperties
-from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.session.aiohttp import AiohttpSession
+from aiogram.fsm.storage.memory import MemoryStorage
 from dotenv import load_dotenv
-
 from handlers.common import router
+
+start_time = time.time()
 
 
 async def run_bot():

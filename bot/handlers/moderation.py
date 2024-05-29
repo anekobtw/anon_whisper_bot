@@ -1,6 +1,5 @@
 from aiogram import F, types
 from aiogram.filters import Command
-
 from database import MessagesManager, UsersManager
 from handlers.common import router
 from keyboards import get_ban_kb

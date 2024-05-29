@@ -5,9 +5,8 @@ from aiogram.filters import Command, CommandObject, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.utils import deep_linking
-from dotenv import load_dotenv
-
 from database import UsersManager
+from dotenv import load_dotenv
 from keyboards import get_report_kb
 
 router = Router()
@@ -46,7 +45,9 @@ async def start(message: types.Message):
 
     load_dotenv()
     deeplink = deep_linking.create_deep_link(
-        username=os.getenv("BOT_TG_NICKNAME"), link_type="start", payload=message.from_user.id
+        username=os.getenv("BOT_TG_NICKNAME"),
+        link_type="start",
+        payload=message.from_user.id,
     )
     await message.answer(
         f"Привет, {message.from_user.full_name}! Это бот для отправки анонимных сообщений. Помни, что пользуясь ботом, ты соглашаешься следовать /rules\n\nОтправь свою ссылку друзьям и получи сообщения от них анонимные сообщения:\n{deeplink}"
@@ -57,7 +58,9 @@ async def start(message: types.Message):
 async def link(message: types.Message):
     load_dotenv()
     deeplink = deep_linking.create_deep_link(
-        username=os.getenv("BOT_TG_NICKNAME"), link_type="start", payload=message.from_user.id
+        username=os.getenv("BOT_TG_NICKNAME"),
+        link_type="start",
+        payload=message.from_user.id,
     )
     await message.answer(f"Твоя личная ссылка, отправляй её друзьям:\n{deeplink}")
 
