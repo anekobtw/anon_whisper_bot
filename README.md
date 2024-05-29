@@ -1,2 +1,1 @@
-# shopegram
- Customizable shopping assistant on Telegram
+# whisper bot
