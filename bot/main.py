@@ -16,8 +16,6 @@ start_time = time.time()
 async def run_bot():
     load_dotenv()
     TOKEN = os.getenv("TOKEN")
-    # session = AiohttpSession(proxy="http://proxy.server:3128")
-    # bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"), session=session)
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 
     logging.basicConfig(
